@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap";
@@ -12,7 +11,7 @@ import Loader from "../Components/Loader";
 
 const ProductScreen = ({ history, match }) => {
   
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   const productDetails = useSelector(state => state.productDetails)
@@ -31,28 +30,6 @@ const ProductScreen = ({ history, match }) => {
       <Link className="btn btn-light my-3">Go back</Link>
       {loading ? <Loader /> : error ? <Message variant='danger'></Message> : (
         <Row>
-=======
-import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import Rating from "../Components/Rating";
-import axios from "axios";
-// import products from "../products";
-
-const ProductScreen = ({ match }) => {
-  // const product = products.find((p) => p._id === match.params.id);
-  const [product, setProduct] = useState({})
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`)
-      setProduct(data)
-    }
-    fetchProduct()
-  },[match]) 
-  return (
-    <>
-      <Link className="btn btn-light my-3">Go back</Link>
-      <Row>
->>>>>>> 00bcf477599fafbfa2b5cb93e004f4de3cf5941d
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
         </Col>
@@ -90,7 +67,6 @@ const ProductScreen = ({ match }) => {
                   </Col>
                 </Row>
               </ListGroup.Item>
-<<<<<<< HEAD
 
               {product.countInStock > 0 && (
                 <ListGroup.Item>
@@ -114,10 +90,6 @@ const ProductScreen = ({ match }) => {
               <ListGroup.Item>
                 <Button
                   onClick={addToCartHandler}
-=======
-              <ListGroup.Item>
-                <Button
->>>>>>> 00bcf477599fafbfa2b5cb93e004f4de3cf5941d
                   className="btn-block"
                   type="button"
                   disabled={product.countInStock === 0}
@@ -129,11 +101,8 @@ const ProductScreen = ({ match }) => {
           </Card>
         </Col>
       </Row>
-<<<<<<< HEAD
       )}
       
-=======
->>>>>>> 00bcf477599fafbfa2b5cb93e004f4de3cf5941d
     </>
   );
 };
