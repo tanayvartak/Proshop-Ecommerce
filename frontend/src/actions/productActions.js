@@ -3,12 +3,9 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAIL,
-<<<<<<< HEAD
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
-=======
->>>>>>> 00bcf477599fafbfa2b5cb93e004f4de3cf5941d
 } from "../constants/productConstants.js";
 
 export const listProducts = () => async (dispatch) => {
@@ -31,7 +28,6 @@ export const listProducts = () => async (dispatch) => {
     });
   }
 };
-<<<<<<< HEAD
 
 
 export const listProductDetails = (id) => async (dispatch) => {
@@ -55,5 +51,3 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-=======
->>>>>>> 00bcf477599fafbfa2b5cb93e004f4de3cf5941d
