@@ -5,7 +5,15 @@ import asyncHandler from "express-async-handler";
 // @route GET api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+  const products = await Product.find({ ...keyword });
   res.json(products);
 });
 
@@ -59,15 +67,8 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route PUT api/products/:id
 // @access Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    image,
-    brand,
-    category,
-    countInStock,
-  } = req.body;
+  const { name, price, description, image, brand, category, countInStock } =
+    req.body;
 
   const product = await Product.findById(req.params.id);
 
