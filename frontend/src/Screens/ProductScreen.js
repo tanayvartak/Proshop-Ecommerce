@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Meta from "../Components/Meta";
 import {
   Row,
   Col,
@@ -35,10 +36,8 @@ const ProductScreen = ({ history, match }) => {
   const { userInfo } = userLogin;
 
   const productReviewCreate = useSelector((state) => state.productReviewCreate);
-  const {
-    success: successProductReview,
-    error: errorProductReview,
-  } = productReviewCreate;
+  const { success: successProductReview, error: errorProductReview } =
+    productReviewCreate;
 
   useEffect(() => {
     if (successProductReview) {
@@ -66,13 +65,16 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className="btn btn-light my-3">Go back</Link>
+      <Link to="/" className="btn btn-light my-3">
+        Go back
+      </Link>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger"></Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
